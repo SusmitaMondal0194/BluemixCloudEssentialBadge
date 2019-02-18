@@ -1,5 +1,7 @@
 package com.training.sanity.tests;
 
+//TestCase ID: RTTC_005
+
 
 import java.io.FileInputStream;
 import java.io.IOException;
