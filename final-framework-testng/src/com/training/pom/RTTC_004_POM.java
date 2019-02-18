@@ -6,10 +6,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class OrderDetailsPOM {
+public class RTTC_004_POM {
 	private WebDriver driver;
 
-	public OrderDetailsPOM(WebDriver driver) {
+	public RTTC_004_POM(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}

@@ -1,6 +1,5 @@
 package com.training.sanity.tests;
 
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -13,15 +12,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.VerifyCredentialsPOM;
+import com.training.pom.RTTC_003_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class VerifyCredentialsTest {
+public class RTTC_003_Test{
 
 	private WebDriver driver;
 	private String baseUrl;
-	private VerifyCredentialsPOM verifyCredentialsPOM;
+	private RTTC_003_POM rTTC_003_POM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -35,7 +34,7 @@ public class VerifyCredentialsTest {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		verifyCredentialsPOM = new VerifyCredentialsPOM(driver);
+		rTTC_003_POM = new RTTC_003_POM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);
 		// open the browser
@@ -49,15 +48,19 @@ public class VerifyCredentialsTest {
 	}
 
 	@Test
-	public void verifyCredentialsTest() {
-		verifyCredentialsPOM.clickAccountIcon();
-		verifyCredentialsPOM.emailAddress("susmita@gmail.com");
-		verifyCredentialsPOM.password("12345");
-		verifyCredentialsPOM.clickLoginBtn();
-		String actualTitle = driver.getTitle();
-		//System.out.println(actualTitle);
-		Assert.assertEquals(actualTitle, "My Account");
-		screenShot.captureScreenShot("Second");
+	public void rTTC_003_Test() {
+		rTTC_003_POM.clickAccountIcon();
+		rTTC_003_POM.emailAddress("susmita@gmail.com");
+		rTTC_003_POM.password("87656");
+		rTTC_003_POM.clickLoginBtn();
+		rTTC_003_POM.forgottenPassword();
+		rTTC_003_POM.recoverPassword("susmita@gmail.com");
+		rTTC_003_POM.continueRecovery();
+		String actualMsg = rTTC_003_POM.recoveryMsg();
+		// System.out.println(actualMsg);
+		Assert.assertEquals(actualMsg, "An email with a confirmation link has been sent your email address.");
+		screenShot.captureScreenShot("Third");
+
 	}
 
 }

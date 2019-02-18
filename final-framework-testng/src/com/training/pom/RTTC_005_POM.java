@@ -7,11 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class EditAccountInfoPOM {
+public class RTTC_005_POM {
 	private WebDriver driver;
 	public static boolean flag = false;
 
-	public EditAccountInfoPOM(WebDriver driver) {
+	public RTTC_005_POM(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}

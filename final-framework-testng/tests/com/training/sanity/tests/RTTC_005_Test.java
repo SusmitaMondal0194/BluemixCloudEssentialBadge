@@ -1,7 +1,5 @@
 package com.training.sanity.tests;
 
-//TestCase ID: RTTC_005
-
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,15 +13,16 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.EditAccountInfoPOM;
+//import com.training.pom.EditAccountInfoPOM;
+import com.training.pom.RTTC_005_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class EditAccountInfoTest {
+public class RTTC_005_Test{
 
 	private WebDriver driver;
 	private String baseUrl;
-	private EditAccountInfoPOM editAccountInfoPOM;
+	private RTTC_005_POM rTTC_005_POM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -37,7 +36,7 @@ public class EditAccountInfoTest {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		editAccountInfoPOM = new EditAccountInfoPOM(driver);
+		rTTC_005_POM = new RTTC_005_POM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);
 		// open the browser
@@ -54,18 +53,18 @@ public class EditAccountInfoTest {
 	
 
 	@Test
-	public void editAccountInfoTest() {
-		editAccountInfoPOM.clickAccountIcon();
-		editAccountInfoPOM.emailAddress("susmita2@gmail.com");
-		editAccountInfoPOM.password("12345");
-		editAccountInfoPOM.clickLoginBtn();
-		editAccountInfoPOM.editAccountInfo();
-		editAccountInfoPOM.fname("Susmita1");
-		editAccountInfoPOM.lname("Mondal1");
-		editAccountInfoPOM.email("susmita@gmail.com");
-		editAccountInfoPOM.telephone("9904505451");
-		editAccountInfoPOM.clickContinue();
-		String actualMsg=editAccountInfoPOM.confirmationMsg();
+	public void rTTC_005_Test() {
+		rTTC_005_POM.clickAccountIcon();
+		rTTC_005_POM.emailAddress("susmita@gmail.com");
+		rTTC_005_POM.password("12345");
+		rTTC_005_POM.clickLoginBtn();
+		rTTC_005_POM.editAccountInfo();
+		rTTC_005_POM.fname("Susmita1");
+		rTTC_005_POM.lname("Mondal1");
+		rTTC_005_POM.email("susmita@gmail.com");
+		rTTC_005_POM.telephone("9904505451");
+		rTTC_005_POM.clickContinue();
+		String actualMsg=rTTC_005_POM.confirmationMsg();
 		//System.out.println(actualMsg);
 		Assert.assertEquals(actualMsg, "Success: Your account has been successfully updated.");
 		screenShot.captureScreenShot("Fifth");
