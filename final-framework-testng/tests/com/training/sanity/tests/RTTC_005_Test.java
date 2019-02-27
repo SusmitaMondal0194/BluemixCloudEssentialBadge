@@ -1,6 +1,5 @@
 package com.training.sanity.tests;
 
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -11,18 +10,20 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.training.generics.ScreenShot;
-//import com.training.pom.EditAccountInfoPOM;
-import com.training.pom.RTTC_005_POM;
+import com.training.pom.Edit_Account_POM;
+import com.training.pom.Login_POM;
+import com.training.pom.Registration_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class RTTC_005_Test{
+public class RTTC_005_Test {
 
 	private WebDriver driver;
 	private String baseUrl;
-	private RTTC_005_POM rTTC_005_POM;
+	private Registration_POM registration_POM;
+	private Login_POM login_POM;
+	private Edit_Account_POM edit_Account_POM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -36,7 +37,9 @@ public class RTTC_005_Test{
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		rTTC_005_POM = new RTTC_005_POM(driver);
+		registration_POM = new Registration_POM(driver);
+		login_POM = new Login_POM(driver);
+		edit_Account_POM = new Edit_Account_POM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);
 		// open the browser
@@ -50,22 +53,41 @@ public class RTTC_005_Test{
 
 	}
 
-	
-
 	@Test
 	public void rTTC_005_Test() {
-		rTTC_005_POM.clickAccountIcon();
-		rTTC_005_POM.emailAddress("susmita@gmail.com");
-		rTTC_005_POM.password("12345");
-		rTTC_005_POM.clickLoginBtn();
-		rTTC_005_POM.editAccountInfo();
-		rTTC_005_POM.fname("Susmita1");
-		rTTC_005_POM.lname("Mondal1");
-		rTTC_005_POM.email("susmita@gmail.com");
-		rTTC_005_POM.telephone("9904505451");
-		rTTC_005_POM.clickContinue();
-		String actualMsg=rTTC_005_POM.confirmationMsg();
-		//System.out.println(actualMsg);
+		// clicking on Account Icon
+		registration_POM.clickAccountIcon();
+
+		// Getting the Email ID
+		login_POM.emailAddress("susmita@gmail.com");
+
+		// Providing Password
+		login_POM.password("12345");
+
+		// Clicking on Login Button
+		login_POM.clickLoginBtn();
+
+		//Clicking on Edit Account Info
+		edit_Account_POM.editAccountInfo();
+		
+		//Modify Firstname
+		edit_Account_POM.fname("Susmita1");
+		
+		//Modify Lastname
+		edit_Account_POM.lname("Mondal1");
+		
+		//Modify Email ID
+		edit_Account_POM.email("susmita@gmail.com");
+		
+		//Modify Phone number
+		edit_Account_POM.telephone("9904505451");
+		
+		//Clicking on Continue button
+		edit_Account_POM.clickContinue();
+		
+		//Below codes are for Assertion process
+		String actualMsg = edit_Account_POM.confirmationMsg();
+		// System.out.println(actualMsg);
 		Assert.assertEquals(actualMsg, "Success: Your account has been successfully updated.");
 		screenShot.captureScreenShot("Fifth");
 

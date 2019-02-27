@@ -11,9 +11,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.training.generics.ScreenShot;
-import com.training.pom.RTTC_002_POM;
+import com.training.pom.Login_POM;
+import com.training.pom.Registration_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
@@ -21,7 +21,8 @@ public class RTTC_002_Test {
 
 	private WebDriver driver;
 	private String baseUrl;
-	private RTTC_002_POM rTTC_002_POM;
+	private Login_POM login_POM;
+	private Registration_POM registration_POM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -35,7 +36,8 @@ public class RTTC_002_Test {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		rTTC_002_POM = new RTTC_002_POM(driver);
+		registration_POM = new Registration_POM(driver);
+		login_POM = new Login_POM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);
 		// open the browser
@@ -50,10 +52,20 @@ public class RTTC_002_Test {
 
 	@Test
 	public void rTTC_002_Test() {
-		rTTC_002_POM.clickAccountIcon();
-		rTTC_002_POM.emailAddress("susmita@gmail.com");
-		rTTC_002_POM.password("12345");
-		rTTC_002_POM.clickLoginBtn();
+		
+		//clicking on Account Icon
+		registration_POM.clickAccountIcon();
+		
+		//Getting the Email ID
+		login_POM.emailAddress("susmita@gmail.com");
+		
+		//Providing Password
+		login_POM.password("12345");
+		
+		//Clicking on Login Button
+		login_POM.clickLoginBtn();
+		
+		//Below codes are for Assertion process
 		String actualTitle = driver.getTitle();
 		//System.out.println(actualTitle);
 		Assert.assertEquals(actualTitle, "My Account");

@@ -12,7 +12,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.RTTC_003_POM;
+import com.training.pom.Login_POM;
+import com.training.pom.Recover_PW_POM;
+import com.training.pom.Registration_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
@@ -20,7 +22,9 @@ public class RTTC_003_Test{
 
 	private WebDriver driver;
 	private String baseUrl;
-	private RTTC_003_POM rTTC_003_POM;
+	private Registration_POM registration_POM;
+	private Login_POM login_POM;
+	private Recover_PW_POM recover_PW_POM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -34,7 +38,9 @@ public class RTTC_003_Test{
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		rTTC_003_POM = new RTTC_003_POM(driver);
+		registration_POM = new Registration_POM(driver);
+		login_POM = new Login_POM(driver);
+		recover_PW_POM = new Recover_PW_POM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);
 		// open the browser
@@ -49,14 +55,30 @@ public class RTTC_003_Test{
 
 	@Test
 	public void rTTC_003_Test() {
-		rTTC_003_POM.clickAccountIcon();
-		rTTC_003_POM.emailAddress("susmita@gmail.com");
-		rTTC_003_POM.password("87656");
-		rTTC_003_POM.clickLoginBtn();
-		rTTC_003_POM.forgottenPassword();
-		rTTC_003_POM.recoverPassword("susmita@gmail.com");
-		rTTC_003_POM.continueRecovery();
-		String actualMsg = rTTC_003_POM.recoveryMsg();
+		
+		//Clicking on Account Icon
+		registration_POM.clickAccountIcon();
+		
+		//Getting the Email ID
+		login_POM.emailAddress("susmita@gmail.com");
+		
+		//Providing Password
+		login_POM.password("87656");
+		
+		//Clicking on Login Button
+		login_POM.clickLoginBtn();
+		
+		//Clicking on forgotten Password link
+		recover_PW_POM.forgottenPassword();
+		
+		//Providing Email ID to recover Password
+		recover_PW_POM.recoverPassword("susmita@gmail.com");
+		
+		//Clicking continue to recovery
+		recover_PW_POM.continueRecovery();
+		
+		//Below codes are for Assertion process
+		String actualMsg = recover_PW_POM.recoveryMsg();
 		// System.out.println(actualMsg);
 		Assert.assertEquals(actualMsg, "An email with a confirmation link has been sent your email address.");
 		screenShot.captureScreenShot("Third");
