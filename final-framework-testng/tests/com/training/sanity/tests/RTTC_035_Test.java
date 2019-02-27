@@ -17,7 +17,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.RTTC_035_POM;
+import com.training.pom.Admin_RewardPt_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
@@ -25,7 +25,7 @@ public class RTTC_035_Test {
 
 	private WebDriver driver;
 	private String baseUrl;
-	private RTTC_035_POM rTTC_035_POM;
+	private Admin_RewardPt_POM admin_RewardPt_POM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -39,7 +39,7 @@ public class RTTC_035_Test {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		rTTC_035_POM = new RTTC_035_POM(driver);
+		admin_RewardPt_POM = new Admin_RewardPt_POM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);
 		// open the browser
@@ -56,64 +56,64 @@ public class RTTC_035_Test {
 	public void rTTC_035_Test() throws InterruptedException {
 
 		// Providing user name
-		rTTC_035_POM.userName("admin");
+		admin_RewardPt_POM.userName("admin");
 
 		// Providing password
-		rTTC_035_POM.password("admin@123");
+		admin_RewardPt_POM.password("admin@123");
 
 		// Clicking on Login button
-		rTTC_035_POM.clickLoginBtn();
+		admin_RewardPt_POM.clickLoginBtn();
 
 		// Clicking on Catalog
-		rTTC_035_POM.catalog();
+		admin_RewardPt_POM.catalog();
 
 		// Clicking on Product list
-		rTTC_035_POM.productList();
+		admin_RewardPt_POM.productList();
 
 		// Clicking on Add symbol
-		rTTC_035_POM.addProduct();
+		admin_RewardPt_POM.addProduct();
 
 		// Providing product name
-		rTTC_035_POM.productName("Samsung");
+		admin_RewardPt_POM.productName("Samsung");
 
 		// Providing metaTagTitle
-		rTTC_035_POM.metaTagTitle("Samsung Phone");
+		admin_RewardPt_POM.metaTagTitle("Samsung Phone");
 
 		// Clicking on data tab
-		rTTC_035_POM.dataTab();
+		admin_RewardPt_POM.dataTab();
 
 		// Providing model no
-		rTTC_035_POM.model("SKU-012");
+		admin_RewardPt_POM.model("SKU-012");
 
 		// Providing price
-		rTTC_035_POM.price("15000");
+		admin_RewardPt_POM.price("15000");
 
 		// Providing Quantity
-		rTTC_035_POM.quantity("50");
+		admin_RewardPt_POM.quantity("50");
 
 		// Clicking on links tab
-		rTTC_035_POM.linksTab();
+		admin_RewardPt_POM.linksTab();
 
 		// clicking on categories
-		rTTC_035_POM.clickCategories();
+		admin_RewardPt_POM.clickCategories();
 
 		// Selecting values from categories
-		rTTC_035_POM.selectCategories();
+		admin_RewardPt_POM.selectCategories();
 
 		// Clicking on discount tab
-		rTTC_035_POM.discountTab();
+		admin_RewardPt_POM.discountTab();
 
 		// Clicking on add symbol
-		rTTC_035_POM.addDiscount();
+		admin_RewardPt_POM.addDiscount();
 
 		// Providing Quantity
-		rTTC_035_POM.disQuantity("1");
+		admin_RewardPt_POM.disQuantity("1");
 
 		// Providing price
-		rTTC_035_POM.disPrice("500");
+		admin_RewardPt_POM.disPrice("500");
 
 		// Choosing Start date
-		rTTC_035_POM.startDate();
+		admin_RewardPt_POM.startDate();
 
 		// Choosing end date from system date
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
@@ -121,19 +121,19 @@ public class RTTC_035_Test {
 		cal.setTime(new Date());
 		cal.add(Calendar.DATE, 1);
 		String newDate = dateFormat.format(cal.getTime());
-		rTTC_035_POM.endDate(newDate);
+		admin_RewardPt_POM.endDate(newDate);
 
 		// Clicking on Reward tab
-		rTTC_035_POM.rewardTab();
+		admin_RewardPt_POM.rewardTab();
 
 		// Providing points
-		rTTC_035_POM.points("20");
+		admin_RewardPt_POM.points("20");
 
 		// Clicking on Save
-		rTTC_035_POM.saveBtn();
+		admin_RewardPt_POM.saveBtn();
 
 		// Assertion process
-		String actualMsg = rTTC_035_POM.actualMsg();
+		String actualMsg = admin_RewardPt_POM.actualMsg();
 		// System.out.println(actualMsg);
 		String expectedMsg = "Success: You have modified products!";
 		// Assert.assertEquals(actualMsg, " Success: You have modified

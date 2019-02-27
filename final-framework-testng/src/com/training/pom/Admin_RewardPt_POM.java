@@ -7,11 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RTTC_035_POM {
+public class Admin_RewardPt_POM {
 
 	private WebDriver driver;
 
-	public RTTC_035_POM(WebDriver driver) {
+	public Admin_RewardPt_POM(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
