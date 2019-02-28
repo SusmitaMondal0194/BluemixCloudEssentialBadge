@@ -89,7 +89,7 @@ public class Admin_RewardPt_POM {
 	private WebElement disQuantity;
 
 	// Inspecting price
-	@FindBy(name = "product_discount[0][quantity]")
+	@FindBy(name = "product_discount[0][price]")
 	private WebElement disPrice;
 
 	// Inspecting Start date
