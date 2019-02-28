@@ -49,7 +49,7 @@ public class RTTC_035_Test {
 	@AfterMethod
 	public void tearDown() throws Exception {
 		Thread.sleep(1000);
-		//driver.quit();
+		driver.quit();
 	}
 
 	@Test
