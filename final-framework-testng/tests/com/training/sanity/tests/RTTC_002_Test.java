@@ -4,6 +4,7 @@ package com.training.sanity.tests;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -53,6 +54,7 @@ public class RTTC_002_Test {
 	@Test
 	public void rTTC_002_Test() {
 		
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		//clicking on Account Icon
 		registration_POM.clickAccountIcon();
 		

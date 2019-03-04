@@ -44,7 +44,7 @@ public class RTTC_001_Test {
 	@AfterMethod
 	public void tearDown() throws Exception {
 		Thread.sleep(1000);
-		driver.quit();
+		//driver.quit();
 	}
 
 	@Test
@@ -63,7 +63,7 @@ public class RTTC_001_Test {
 		registration_POM.lastName("Mondal");
 		
 		//Entering Email ID
-		registration_POM.email("susmitaa@gmail.com");
+		registration_POM.email("susmita121@gmail.com");
 		
 		//Entering Phone Number
 		registration_POM.telephone("9854451235");

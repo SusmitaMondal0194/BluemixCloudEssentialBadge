@@ -72,8 +72,15 @@ public class Admin_RewardPt_POM {
 	@FindBy(name = "category")
 	private WebElement clickCategories;
 
+	/*
+	 * // Inspecting options under categories
+	 * 
+	 * @FindBy(xpath = "//*[@class='col-sm-10']/ul/li[2]") private WebElement
+	 * selectCategories;
+	 */
+
 	// Inspecting options under categories
-	@FindBy(xpath = "//*[@class='col-sm-10']/ul/li[2]")
+	@FindBy(linkText = "Electronics Goods")
 	private WebElement selectCategories;
 
 	// Inspecting Dsicount tab
@@ -111,6 +118,10 @@ public class Admin_RewardPt_POM {
 	// Inspecting save icon
 	@FindBy(xpath = "//*[@class='pull-right']/button[@type='submit']")
 	private WebElement saveBtn;
+
+	// Inspecting logout button
+	@FindBy(xpath = "//*[@class='nav pull-right']/li[4]/a")
+	private WebElement logoutBtn;
 
 	// Inspecting assertion message
 	@FindBy(xpath = "//*[@class='alert alert-success']")
@@ -252,6 +263,11 @@ public class Admin_RewardPt_POM {
 	public void saveBtn() {
 		this.saveBtn.click();
 
+	}
+
+	// Clicking on logout
+	public void logoutBtn() {
+		this.logoutBtn.click();
 	}
 
 	// Returning assertion message
