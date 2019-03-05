@@ -16,6 +16,7 @@ import com.training.dao.ELearningDAO;
 import com.training.dataproviders.LoginDataProviders;
 import com.training.generics.GenericMethods;
 import com.training.generics.ScreenShot;
+import com.training.pom.Admin_RewardPt_POM;
 import com.training.pom.LoginPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
@@ -24,6 +25,7 @@ public class LoginDBTest {
 	private WebDriver driver;
 	private String baseUrl;
 	private LoginPOM loginPOM;
+	private Admin_RewardPt_POM admin_RewardPt_POM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 	private GenericMethods genericMethods; 
@@ -40,6 +42,7 @@ public class LoginDBTest {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		loginPOM = new LoginPOM(driver);
+		admin_RewardPt_POM = new Admin_RewardPt_POM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);
 		genericMethods = new GenericMethods(driver); 
@@ -59,10 +62,10 @@ public class LoginDBTest {
 		// for demonstration 
 //		genericMethods.getElement("login", "id"); 
 				
-		loginPOM.sendUserName(userName);
+		admin_RewardPt_POM.userName(userName);
 		
-		loginPOM.sendPassword(password);
-		loginPOM.clickLoginBtn();
+		admin_RewardPt_POM.password(password);
+		admin_RewardPt_POM.clickLoginBtn();
 		
 		screenShot.captureScreenShot(userName);
 

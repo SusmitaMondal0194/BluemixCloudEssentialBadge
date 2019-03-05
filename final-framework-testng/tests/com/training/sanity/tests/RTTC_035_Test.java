@@ -49,7 +49,7 @@ public class RTTC_035_Test {
 	@AfterMethod
 	public void tearDown() throws Exception {
 		Thread.sleep(1000);
-		driver.quit();
+		//driver.quit();
 	}
 
 	@Test
@@ -94,8 +94,8 @@ public class RTTC_035_Test {
 		// Clicking on links tab
 		admin_RewardPt_POM.linksTab();
 
-		// clicking on categories
-		admin_RewardPt_POM.clickCategories();
+		// clicking on categories and searching with keyword 'E' for Electronics Goods
+		admin_RewardPt_POM.clickCategories("E");
 
 		// Selecting values from categories
 		admin_RewardPt_POM.selectCategories();

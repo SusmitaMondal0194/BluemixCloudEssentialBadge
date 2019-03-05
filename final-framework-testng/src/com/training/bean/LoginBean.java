@@ -1,24 +1,24 @@
 package com.training.bean;
 
 public class LoginBean {
-	private String userName;
+	private String emailAddress;
 	private String password;
 
 	public LoginBean() {
 	}
 
-	public LoginBean(String userName, String password) {
+	public LoginBean(String emailAddress, String password) {
 		super();
-		this.userName = userName;
+		this.emailAddress = emailAddress;
 		this.password = password;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getemailAddress() {
+		return emailAddress;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
 
 	public String getPassword() {
@@ -31,7 +31,8 @@ public class LoginBean {
 
 	@Override
 	public String toString() {
-		return "LoginBean [userName=" + userName + ", password=" + password + "]";
+		return "LoginBean [emailAddress=" + emailAddress + ", password=" + password + "]";
 	}
+
 
 }

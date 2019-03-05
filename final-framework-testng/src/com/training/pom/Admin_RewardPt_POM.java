@@ -196,10 +196,10 @@ public class Admin_RewardPt_POM {
 	}
 
 	// clicking on categories
-	public void clickCategories() throws InterruptedException {
+	public void clickCategories(String keyword) {
 		// Thread.sleep(3000);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		this.clickCategories.click();
+		this.clickCategories.sendKeys(keyword);
 	}
 
 	// Selecting values from categories
