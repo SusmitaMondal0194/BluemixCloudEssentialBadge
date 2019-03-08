@@ -1,5 +1,7 @@
 package com.training.sanity.tests;
 
+//TestCase is verifying whether application displays Login screen upon checking out the product without Pre Logging in
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -19,8 +21,6 @@ import com.training.generics.ScreenShot;
 import com.training.pom.Checkout_WO_login_POM1;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
-
-//TestCase is verifying whether application displays Login screen upon checking out the product without Pre Logging in
 
 public class RTTC_032_Test1 {
 
@@ -68,6 +68,8 @@ public class RTTC_032_Test1 {
 
 		for (String newWindow : driver.getWindowHandles()) {
 			driver.switchTo().window(newWindow);
+			//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			//driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 			Thread.sleep(5000);
 		}
 		

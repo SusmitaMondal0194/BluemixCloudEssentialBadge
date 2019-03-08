@@ -1,5 +1,7 @@
 package com.training.sanity.tests;
 
+//Below test case is to verify whether application allows the user to recover password
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;

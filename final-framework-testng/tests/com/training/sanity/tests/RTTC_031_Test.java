@@ -1,5 +1,7 @@
 package com.training.sanity.tests;
 
+//TestCase is verifying whether application denies user getting logged in upon entering invalid credentials in required field
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -18,7 +20,6 @@ import com.training.pom.Registration_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-//TestCase is verifying whether application denies user getting logged in upon entering invalid credentials in required field
 
 public class RTTC_031_Test {
 

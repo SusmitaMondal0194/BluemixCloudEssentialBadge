@@ -1,5 +1,7 @@
 package com.training.sanity.tests;
 
+//TestCase is to verify whether application allows user to place an order as guest user
+
 import static org.testng.Assert.assertEquals;
 
 import java.io.FileInputStream;
@@ -21,8 +23,6 @@ import com.training.pom.Checkout_With_login_POM;
 import com.training.pom.Checkout_as_Guest_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
-
-//TestCase is verifying whether application displays Login screen upon checking out the product without Pre Logging in
 
 public class RTTC_034_Test {
 

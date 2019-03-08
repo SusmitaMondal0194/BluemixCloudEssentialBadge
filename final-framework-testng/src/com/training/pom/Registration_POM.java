@@ -110,77 +110,89 @@ public class Registration_POM {
 	}
 
 	// Providing firstname
-	public void firstName(String firstName) {
+	public String firstName(String firstName) {
 		this.firstName.clear();
 		this.firstName.sendKeys(firstName);
+		return firstName;
 	}
 
 	// Providing lastname
-	public void lastName(String lastName) {
+	public String lastName(String lastName) {
 		this.lastName.clear();
 		this.lastName.sendKeys(lastName);
+		return lastName;
 	}
 
 	// Providing Email
-	public void email(String email) {
+	public String email(String email) {
 		this.email.clear();
 		this.email.sendKeys(email);
+		return email;
 	}
 
 	// Providing Telephone
-	public void telephone(String telephone) {
+	public String telephone(String telephone) {
 		this.telephone.clear();
 		this.telephone.sendKeys(telephone);
+		return telephone;
 	}
 
 	// Providing Address1
-	public void address1(String address1) {
+	public String address1(String address1) {
 		this.address1.clear();
 		this.address1.sendKeys(address1);
+		return address1;
 	}
 
 	// Providing Address2
-	public void address2(String address2) {
+	public String address2(String address2) {
 		this.address2.clear();
 		this.address2.sendKeys(address2);
+		return address2;
 	}
 
 	// Providing city
-	public void city(String city) {
+	public String city(String city) {
 		this.city.clear();
 		this.city.sendKeys(city);
+		return city;
 	}
 
 	// Providing Postal code
-	public void postCode(String postCode) {
+	public String postCode(String postCode) {
 		this.postCode.clear();
 		this.postCode.sendKeys(postCode);
+		return postCode;
 	}
 
 	// Providing country
-	public void country(String country) {
+	public String country(String country) {
 		// this.country.clear();
 		Select s = new Select(this.country);
 		s.selectByVisibleText(country);
+		return country;
 	}
 
 	// Providing State
-	public void state(String state) {
+	public String state(String state) {
 		// this.state.clear();
 		Select s = new Select(this.state);
 		s.selectByVisibleText(state);
+		return state;
 	}
 
 	// Providing Password
-	public void password(String password) {
+	public String password(String password) {
 		this.password.clear();
 		this.password.sendKeys(password);
+		return password;
 	}
 
 	// Providing Confirm Password
-	public void confirmPassword(String confirmPassword) {
+	public String confirmPassword(String confirmPassword) {
 		this.confirmPassword.clear();
 		this.confirmPassword.sendKeys(confirmPassword);
+		return confirmPassword;
 	}
 
 	// Providing Subscribe Button

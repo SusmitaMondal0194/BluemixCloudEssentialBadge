@@ -1,6 +1,6 @@
 package com.training.sanity.tests;
 
-//Below test case is to  verify whether application allows the user to get registered  by entering valid credentials in required fields
+//This test case is to verify whether application allows multiple user to get registered into the application
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,12 +13,13 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.training.dataproviders.LoginDataProviders;
 import com.training.generics.ScreenShot;
 import com.training.pom.Registration_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class RTTC_001_Test {
+public class RTTC_062_Test {
 
 	private WebDriver driver;
 	private String baseUrl;
@@ -49,65 +50,68 @@ public class RTTC_001_Test {
 		driver.quit();
 	}
 
-	@Test
-	public void rTTC_001_Test() {
-		
-		//clicking on Account Icon
+	@Test(dataProvider = "excel-inputs", dataProviderClass = LoginDataProviders.class)
+	public void loginDBTest(String FirstName, String LastName, String EMail, String Telephone, String Address1,
+			String Address2, String City, String PostalCode, String Country, String Region, String Password,
+			String PasswordConfirm) {
+
+		// clicking on Account Icon
 		registration_POM.clickAccountIcon();
-		
-		//clicking on Register
+
+		// clicking on Register
 		registration_POM.clickRegister();
-		
-		//Entering firstName
-		registration_POM.firstName("Susmita");
-		
-		//Enetring Last Name
-		registration_POM.lastName("Mondal");
-		
-		//Entering Email ID
-		registration_POM.email("susmita121@gmail.com");
-		
-		//Entering Phone Number
-		registration_POM.telephone("9854451235");
-		
-		//Entering address 1
-		registration_POM.address1("GARDEN REACH");
-		
-		//Entering address 2
-		registration_POM.address2("KOLKATA");
-		
-		////Entering city
-		registration_POM.city("KOLKATA");
-		
-		//Entering Postal code
-		registration_POM.postCode("777765");
-		
-		//Entering Country
-		registration_POM.country("India");
-		
-		//Entering State
-		registration_POM.state("West Bengal");
-		
-		//creating a Password
-		registration_POM.password("12345");
-		
-		//Confirming the entered password
-		registration_POM.confirmPassword("12345");
-		
-		//Clicking on Subscribe Radio Button
+
+		// Entering firstName
+		registration_POM.firstName(FirstName);
+
+		// Entering Last Name
+		registration_POM.lastName(LastName);
+
+		// Entering Email ID
+		registration_POM.email(EMail);
+
+		// Entering Phone Number
+		registration_POM.telephone(Telephone);
+
+		// Entering address 1
+		registration_POM.address1(Address1);
+
+		// Entering address 2
+		registration_POM.address2(Address2);
+
+		// Entering city
+		registration_POM.city(City);
+
+		// Entering Postal code
+		registration_POM.postCode(PostalCode);
+
+		// Entering Country
+		registration_POM.country(Country);
+
+		// Entering State
+		registration_POM.state(Region);
+
+		// creating a Password
+		registration_POM.password(Password);
+
+		// Confirming the entered password
+		registration_POM.confirmPassword(PasswordConfirm);
+
+		// Clicking on Subscribe Radio Button
 		registration_POM.subscribeBtn();
-		
-		//Clicking on Privacy Policy Check Box
+
+		// Clicking on Privacy Policy Check Box
 		registration_POM.policyCheckBox();
-		
-		//Clicking on Continue button
+
+		// Clicking on Continue button
 		registration_POM.continueBtn();
-		
-		//Below codes are for Assertion process
+
+		// Below codes are for Assertion process
 		String actualMsg = registration_POM.welcomeMsg();
-		// System.out.println(actualMsg);
+		//System.out.println(actualMsg);
 		Assert.assertEquals(actualMsg, "Congratulations! Your new account has been successfully created!");
-		screenShot.captureScreenShot("First");
+		screenShot.captureScreenShot("Sixty Two");
+
 	}
 
 }

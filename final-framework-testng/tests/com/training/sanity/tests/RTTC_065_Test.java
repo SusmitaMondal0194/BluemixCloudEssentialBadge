@@ -1,6 +1,6 @@
 package com.training.sanity.tests;
 
-//Test Case is to verify whether application allows admin to add product with the rewards point
+//Below test case is to verify whether added product details get displayed in home screen
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -20,14 +21,18 @@ import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
 import com.training.pom.Admin_RewardPt_POM;
+import com.training.pom.Checkout_WO_login_POM1;
+import com.training.pom.SearchProduct_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class RTTC_035_Test {
+public class RTTC_065_Test {
 
 	private WebDriver driver;
 	private String baseUrl;
 	private Admin_RewardPt_POM admin_RewardPt_POM;
+	private Checkout_WO_login_POM1 checkout_WO_login_POM1;
+	private SearchProduct_POM searchProduct_POM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -42,6 +47,8 @@ public class RTTC_035_Test {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		admin_RewardPt_POM = new Admin_RewardPt_POM(driver);
+		checkout_WO_login_POM1 = new Checkout_WO_login_POM1(driver);
+		searchProduct_POM = new SearchProduct_POM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);
 		// open the browser
@@ -53,9 +60,10 @@ public class RTTC_035_Test {
 		Thread.sleep(1000);
 		driver.quit();
 	}
+	
 
 	@Test
-	public void rTTC_035_Test() throws InterruptedException {
+	public void rTTC_065_Test() throws InterruptedException {
 
 		// Providing user name
 		admin_RewardPt_POM.userName("admin");
@@ -76,10 +84,10 @@ public class RTTC_035_Test {
 		admin_RewardPt_POM.addProduct();
 
 		// Providing product name
-		admin_RewardPt_POM.productName("Samsung");
+		admin_RewardPt_POM.productName("LED TV");
 
 		// Providing metaTagTitle
-		admin_RewardPt_POM.metaTagTitle("Samsung Phone");
+		admin_RewardPt_POM.metaTagTitle("Sony LED TVs");
 
 		// Clicking on data tab
 		admin_RewardPt_POM.dataTab();
@@ -88,60 +96,47 @@ public class RTTC_035_Test {
 		admin_RewardPt_POM.model("SKU-012");
 
 		// Providing price
-		admin_RewardPt_POM.price("15000");
+		admin_RewardPt_POM.price("40000");
 
 		// Providing Quantity
-		admin_RewardPt_POM.quantity("50");
+		admin_RewardPt_POM.quantity("20");
 
 		// Clicking on links tab
 		admin_RewardPt_POM.linksTab();
 
-		// clicking on categories and searching with keyword 'E' for Electronics Goods
-		admin_RewardPt_POM.clickCategories("Electronics ");
+		// clicking on categories and typing the Keyword Electronics of Electronics Goods
+		admin_RewardPt_POM.clickCategories("Electronics G");
 
 		// Selecting values from categories
 		admin_RewardPt_POM.selectCategories();
 
-		// Clicking on discount tab
-		admin_RewardPt_POM.discountTab();
-
-		// Clicking on add symbol
-		admin_RewardPt_POM.addDiscount();
-
-		// Providing Quantity
-		admin_RewardPt_POM.disQuantity("1");
-
-		// Providing price
-		admin_RewardPt_POM.disPrice("500");
-
-		// Choosing Start date
-		admin_RewardPt_POM.startDate();
-
-		// Choosing end date from system date
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(new Date());
-		cal.add(Calendar.DATE, 1);
-		String newDate = dateFormat.format(cal.getTime());
-		admin_RewardPt_POM.endDate(newDate);
-
-		// Clicking on Reward tab
-		admin_RewardPt_POM.rewardTab();
-
-		// Providing points
-		admin_RewardPt_POM.points("20");
-
 		// Clicking on Save
 		admin_RewardPt_POM.saveBtn();
 
+		// Clicking on Save
+		admin_RewardPt_POM.logoutBtn();
+
+		// Navigating to user home page
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.navigate().to("http://retail.upskills.in/");
+
+		// Moving to Shop now
+		checkout_WO_login_POM1.moveToShopNow();
+
+		// Clicking on Ethnic
+		searchProduct_POM.clickElectronicsGoods();
+
+		// Searching products
+		searchProduct_POM.clickSearchBtn("LED TV");
+
 		// Assertion process
-		String actualMsg = admin_RewardPt_POM.actualMsg();
-		// System.out.println(actualMsg);
-		String expectedMsg = "Success: You have modified products!";
-		// Assert.assertEquals(actualMsg, " Success: You have modified
-		// products!"+"\nx");
+		String actualMsg = searchProduct_POM.actualMsg();
+		String expectedMsg = "Search: LED TV";
+		System.out.println(actualMsg);
 		Assert.assertTrue(actualMsg.contains(expectedMsg));
-		screenShot.captureScreenShot("ThirtyFive");
+		screenShot.captureScreenShot("SixtyFive");
+		
+		
 	}
 
 }

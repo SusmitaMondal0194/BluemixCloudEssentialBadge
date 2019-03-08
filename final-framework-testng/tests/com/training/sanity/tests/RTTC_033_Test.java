@@ -1,5 +1,7 @@
 package com.training.sanity.tests;
 
+//Below testcase is to verify whether application allows user to place an order with Pre Logging in
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -19,8 +21,6 @@ import com.training.pom.Login_POM;
 import com.training.pom.Registration_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
-
-//TestCase is verifying whether application denies user getting logged in upon entering invalid credentials in required field
 
 public class RTTC_033_Test {
 
@@ -84,6 +84,8 @@ public class RTTC_033_Test {
 		// Switching to new window
 		for (String newWindow : driver.getWindowHandles()) {
 			driver.switchTo().window(newWindow);
+			//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			//driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 			Thread.sleep(5000);
 		}
 

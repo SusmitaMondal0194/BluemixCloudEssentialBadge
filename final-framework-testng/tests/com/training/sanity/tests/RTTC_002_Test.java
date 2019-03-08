@@ -1,5 +1,6 @@
 package com.training.sanity.tests;
 
+// Below test case is verify whether application allows user to get logged in by entering valid credentials in required field
 
 import java.io.FileInputStream;
 import java.io.IOException;
